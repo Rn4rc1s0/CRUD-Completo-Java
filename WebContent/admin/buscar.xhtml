@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/admin/template.xhtml">
+		<ui:define name="conteudo">
+		
+		
+		<h3>Buscar Funcionários</h3>
+		
+		<h:form id="form2">
+			<h:outputText value="Informe o nome: " />
+			<p:inputText value="#{fBean.f.nome}" />
+			<p:message for="form2"></p:message>
+			<p:commandButton value="BUSCAR" update="form2" 
+				action="#{fBean.buscar}"></p:commandButton>
+			
+			<br /><a href="painel.jsf">Voltar</a>
+			
+			
+			<p:separator />
+			
+			<p:dataTable value="#{fBean.listaF}" var="func" emptyMessage="Nenhum funcionario na lista">
+				<p:column headerText="NOME">
+					<h:outputText value="#{func.nome}" />
+				</p:column>
+				
+				<p:column headerText="SALÁRIO">
+					<h:outputText value="#{func.salario}">
+						<f:convertNumber type="currency" locale="pt_BR" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="ADMISSÃO">
+					<h:outputText value="#{func.admissao}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="DETALHES">
+					<p:commandButton ajax="false" value="DETALHES"
+					action="#{fBean.detalhes}" 
+						>
+						<f:setPropertyActionListener value="#{func}" 
+									target="#{fBean.f2}" />	
+					</p:commandButton>
+					
+					<p:commandButton ajax="false" value="EXCLUIR"
+					action="#{fBean.excluir}" >
+						<f:setPropertyActionListener value="#{func}" 
+									target="#{fBean.f2}" />	
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+			
+		</h:form>
+		
+	</ui:define>
+	</ui:composition>
+</html>

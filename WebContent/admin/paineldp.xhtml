@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="/admin/template.xhtml">
+		<ui:define name="conteudo">
+		
+		
+		<p:panel header="CADASTRAR DEPARTAMENTO">
+			<h:form id="form3">
+				<h:panelGrid columns="3">
+					
+					<h:outputText value="NOME: " />
+					<p:inputText id="nome" value="#{dBean.d.nomeDepartamento}" required="true" requiredMessage="Informe o campo nome" />
+					<p:message for="nome" />
+					
+						<h:outputText value="ID DO DEPARTAMENTO: " />
+					<p:inputText id="departamento" value="#{dBean.d.idDepartamento}" required="true" requiredMessage="Informe o id od departamento" />
+					<p:message for="departamento" />
+			
+					
+				</h:panelGrid>
+				<p:commandButton value="CADASTRAR" update="form3" 
+					action="#{dBean.cadastrar}" />
+				<p:message for="form3"></p:message>
+			</h:form>
+			
+			<a href="buscardp.jsf">Buscar Departamento</a>
+			
+		</p:panel>
+		</ui:define>
+	</ui:composition>
+		
+</html>

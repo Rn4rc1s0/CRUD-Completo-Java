@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/admin/template.xhtml">
+	<ui:define name="conteudo">
+
+
+		<h3>Buscar Departamento</h3>
+
+		<h:form id="form4">
+			<h:outputText value="Informe o nome: " />
+			<p:inputText value="#{dBean.d.nomeDepartamento}" /> 
+			
+			<p:message for="form4"></p:message>
+			
+			<p:commandButton value="BUSCAR" update="form4"
+				action="#{dBean.buscar}"></p:commandButton>
+
+
+			<br />
+			<a href="paineldp.jsf">Voltar</a>
+			<p:separator />
+
+			<p:dataTable value="#{dBean.listaD}" var="func"
+				emptyMessage="Nenhum Departamento na lista">
+				<p:column headerText="NOME">
+					<h:outputText value="#{func.nomeDepartamento}" />
+				</p:column>
+
+				<p:column headerText="ID DEPARTAMENTO">
+					<h:outputText value="#{func.idDepartamento}" />
+				</p:column>
+
+
+
+				<p:column headerText="DETALHES">
+
+
+					<p:commandButton ajax="false" value="EXCLUIR"
+						action="#{dBean.excluir}">
+						<f:setPropertyActionListener value="#{func}" target="#{dBean.d2}" />
+					</p:commandButton>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+</html>

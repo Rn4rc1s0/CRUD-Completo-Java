@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+	<h:head></h:head>
+	<h:body>
+		<h:form id="formmenu">
+			<p:menubar>
+				<p:menuitem value="HOME" url="painel.jsf"></p:menuitem>
+				<p:submenu label="FUNCIONARIO">
+					<p:menuitem value="CADASTRAR" url="painel.jsf"></p:menuitem>
+					<p:separator></p:separator>
+					<p:menuitem value="BUSCAR" url="buscar.jsf"></p:menuitem>
+				</p:submenu>
+				
+				<p:submenu label="DEPARTAMENTO">
+					<p:menuitem value="CADASTRAR" url="paineldp.jsf"></p:menuitem>
+					<p:separator></p:separator>
+					<p:menuitem value="BUSCAR" url="buscardp.jsf"></p:menuitem>
+					
+				</p:submenu>
+			</p:menubar>
+		</h:form>
+		
+		<ui:insert name="conteudo"></ui:insert>
+		
+	</h:body>
+</html>
